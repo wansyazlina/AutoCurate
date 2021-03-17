@@ -1,11 +1,10 @@
-package com.usm.autocurate
+package com.usm.autocurate.ui.auth
 
 import android.graphics.Typeface
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.WindowManager
 import com.usm.autocurate.R
-import kotlinx.android.synthetic.main.splashscreen.*
 
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -18,6 +17,8 @@ class MainActivity : AppCompatActivity() {
 
         val typeface : Typeface = Typeface.createFromAsset(assets,
                 "Montserrat-Regular")
+
+
 
 
 

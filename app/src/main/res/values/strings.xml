@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">AutoCurate</string>
+    <string name="intro">AutoCurate allows you to find videos with ease and helps you to focus on the task at hand.
+            You can watch, store, learn and curate!</string>
 </resources>
