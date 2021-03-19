@@ -6,6 +6,7 @@
         android:font="@font/montserratregular" />
     <font
         android:fontStyle="italic"
-        android:fontWeight="400"
-        android:font="@font/montserratextralight" />
+        android:font="@font/montserratbold" />
+
+
 </font-family>

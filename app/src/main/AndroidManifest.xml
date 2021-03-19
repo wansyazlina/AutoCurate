@@ -9,7 +9,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.AutoCurate">
-        <activity android:name=".ui.auth.MainActivity">
+        <activity android:name=".ui.auth.SplashActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

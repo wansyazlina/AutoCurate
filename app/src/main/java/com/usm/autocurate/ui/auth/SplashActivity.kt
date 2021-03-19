@@ -1,4 +1,6 @@
 package com.usm.autocurate.ui.auth
 
-class SplashActivity {
+import androidx.appcompat.app.AppCompatActivity
+
+class SplashActivity : AppCompatActivity {
 }
