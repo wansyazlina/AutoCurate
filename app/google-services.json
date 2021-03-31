@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "949310941096",
+    "project_id": "autocurate-80985",
+    "storage_bucket": "autocurate-80985.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:949310941096:android:066226b89ad27fa0d9df9d",
+        "android_client_info": {
+          "package_name": "com.usm.autocurate.ui.auth"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "949310941096-dr8046jbj71ks7junigeil5ao50n6l98.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD3bSeHNlXPPfL7ozbo-doBPXFFi90hN9s"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "949310941096-dr8046jbj71ks7junigeil5ao50n6l98.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
