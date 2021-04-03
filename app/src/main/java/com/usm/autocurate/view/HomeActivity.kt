@@ -1,12 +1,12 @@
-package com.usm.autocurate.ui.auth
+package com.usm.autocurate.view
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import com.usm.autocurate.R
 
-class LoginActivity : AppCompatActivity() {
+class HomeActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.login)
+        setContentView(R.layout.activity_home)
     }
 }

@@ -7,9 +7,9 @@
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:949310941096:android:066226b89ad27fa0d9df9d",
+        "mobilesdk_app_id": "1:949310941096:android:d0a37673ef6f3ff9d9df9d",
         "android_client_info": {
-          "package_name": "com.usm.autocurate.ui.auth"
+          "package_name": "com.usm.autocurate"
         }
       },
       "oauth_client": [
