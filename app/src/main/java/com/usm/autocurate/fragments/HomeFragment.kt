@@ -1,32 +1,35 @@
 package com.usm.autocurate.fragments
 
+import android.content.ContentValues.TAG
+import android.content.Intent
 import android.os.Bundle
-import androidx.fragment.app.Fragment
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.PopupMenu
+import android.widget.Toast
+import androidx.fragment.app.Fragment
+import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.database.*
 import com.usm.autocurate.R
-// TODO: Rename parameter arguments, choose names that match
-// the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
+import com.usm.autocurate.databinding.FragmentHomeBinding
+import com.usm.autocurate.view.LoginRegisterActivity
+
+
 private const val ARG_PARAM1 = "param1"
 private const val ARG_PARAM2 = "param2"
 
-/**
- * A simple [Fragment] subclass.
- * Use the [HomeFragment.newInstance] factory method to
- * create an instance of this fragment.
- */
 class HomeFragment : Fragment() {
-    // TODO: Rename and change types of parameters
-    private var param1: String? = null
-    private var param2: String? = null
+
+    private var fragmentFirstBinding: FragmentHomeBinding? = null
+    private var mFirebaseDatabase: DatabaseReference?=null
+    private var mFirebaseInstance: FirebaseDatabase?=null
+    var userId:String?=null
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        arguments?.let {
-            param1 = it.getString(ARG_PARAM1)
-            param2 = it.getString(ARG_PARAM2)
-        }
     }
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
@@ -34,6 +37,89 @@ class HomeFragment : Fragment() {
         // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_home, container, false)
     }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        val binding = FragmentHomeBinding.bind(view)
+        fragmentFirstBinding = binding
+
+        //initialize popup menu
+        val popupMenu = PopupMenu(activity, binding.hamburgermenu)
+        popupMenu.menuInflater.inflate(R.menu.menu_popup, popupMenu.menu)
+        popupMenu.setOnMenuItemClickListener { menuItem ->
+            when (menuItem.itemId) {
+                R.id.ic_logout -> {
+                    FirebaseAuth.getInstance().signOut()
+                    val intent = Intent(activity, LoginRegisterActivity::class.java);
+                    startActivity(intent);
+                    Toast.makeText(activity, "You are logged out!", Toast.LENGTH_LONG).show()
+                }
+            }
+            true
+        }
+        binding.hamburgermenu.setOnClickListener() {
+            popupMenu.show()
+        }
+
+        binding.progressBarHomeload.visibility= View.VISIBLE
+
+        //get reference to 'users' node
+        mFirebaseDatabase = FirebaseDatabase.getInstance().getReference("Users")
+
+        val user = FirebaseAuth.getInstance().currentUser!!.uid
+        //add it only if it is not saved to database
+//        if (user != null) {
+//            userId = user.uid
+//
+//        }
+
+        Thread {
+            try {
+                val postListener = object : ValueEventListener {
+                    override fun onDataChange(dataSnapshot: DataSnapshot) {
+                        // Get Post object and use the values to update the UI
+                        val userInstance = dataSnapshot.child("userName").getValue(String::class.java)
+                        if (userInstance != null) {
+                            Log.i("NAME: ", userInstance)
+                            binding.nameText.text = userInstance
+                        }
+                        binding.progressBarHomeload.visibility= View.INVISIBLE
+                    }
+
+                    override fun onCancelled(databaseError: DatabaseError) {
+                        // Getting Post failed, log a message
+                        Log.w(TAG, "loadPost:onCancelled", databaseError.toException())
+                    }
+                }
+                mFirebaseDatabase!!.child(user).addValueEventListener(postListener)
+
+            } catch (ignored: Exception) {
+            }
+        }.start()
+
+
+
+
+    }
+
+
+
+    override fun onDestroyView() {
+        // Consider not storing the binding instance in a field
+        // if not needed.
+        fragmentFirstBinding = null
+        super.onDestroyView()
+    }
+
+
+
+
+
+
+
+
+
+
 
     companion object {
         /**

@@ -31,7 +31,6 @@ class SplashActivity: AppCompatActivity() {
 
         loadSplashScreen()
 
-
     }
 
 
@@ -45,7 +44,7 @@ class SplashActivity: AppCompatActivity() {
                 putExtra(EXTRA_MESSAGE, "hello")
             }
             startActivity(intent)
-          //  finish()
+            finish()
         },TIME_OUT)
     }
 

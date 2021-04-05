@@ -2,7 +2,7 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
 
     <item
-        android:id="@+id/ic_dashboard"
+        android:id="@+id/ic_mycuration"
         android:icon="@drawable/ic_mycuration"
         android:title="@string/MyCuration"/>
 
