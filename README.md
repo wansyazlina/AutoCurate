@@ -1,6 +1,6 @@
 # AutoCurate
 
-Hey There! 
+Hey There! I am Wan Syazlina and this is my Final Year Project.
 
 AutoCurate is a simple video curation tool that allows users to curate video content from the YouTube API.
 It is targetted for visual learners who need quick and easy access to view task-based videos.
